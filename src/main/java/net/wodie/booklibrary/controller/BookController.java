@@ -1,5 +1,6 @@
 package net.wodie.booklibrary.controller;
 
+import net.wodie.booklibrary.model.ApiBook;
 import net.wodie.booklibrary.model.Book;
 import net.wodie.booklibrary.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,10 +35,16 @@ public class BookController {
         return service.addBook(book);
     }
 
-    @DeleteMapping(path = "{isbn}")
+    @DeleteMapping("{isbn}")
     public Book delBookByIsbn(@PathVariable String isbn) {
         return service.delBookByIsbn(isbn);
     }
+
+    @PutMapping("/api/{isbn}")
+    public Book addBookByIsbn(@PathVariable String isbn) {
+        return service.addBookByIsbn(isbn);
+    }
+
 
 
 }
