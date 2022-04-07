@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class BookService {
@@ -30,7 +31,11 @@ public class BookService {
     }
 
     public Book getBookByIsbn(String isbn) {
-        return repo.getBookByIsbn(isbn);
+        return repo.getBookByIsbn(isbn)
+                .orElse(new Book( isbn, "!! Fehler !!","ISBN leider nicht in der Datenbank"));
+
+
+//        return repo.getBookByIsbn(isbn);
     }
 
     public Book addBook(Book book) {

@@ -3,18 +3,17 @@ package net.wodie.booklibrary.repo;
 import net.wodie.booklibrary.model.Book;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class BookRepo {
 
     Map<String, Book> books = new HashMap<>();
 
-    public Book getBookByIsbn(String isbn) {
-        return books.get(isbn);
+    public Optional<Book> getBookByIsbn(String isbn) {
+        Optional<Book> optionalBook = Optional.ofNullable(books.get(isbn));
+        return optionalBook;
+
     }
 
     public Book addBook(Book book) {

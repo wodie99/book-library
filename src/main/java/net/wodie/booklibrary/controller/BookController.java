@@ -20,7 +20,7 @@ public class BookController {
     }
 
 
-    @RequestMapping("/all")
+    @RequestMapping
     public List<Book> getAllBooks() {
         return service.getAllBooks();
     }
